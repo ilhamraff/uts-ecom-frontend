@@ -23,10 +23,10 @@ jobs:
           ssh -o StrictHostKeyChecking=no ec2-user@54.255.249.207 << 'EOF'
             cd /home/ec2-user/uts-ecom-frontend
             sudo git pull origin master
-            sudo npm install
-            sudo npm run build
+            npm install
+            npm run build
             # Restart Nginx or any other service if needed
-            sudo systemctl restart nginx
+            sudo systemctl reload nginx
           EOF
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
