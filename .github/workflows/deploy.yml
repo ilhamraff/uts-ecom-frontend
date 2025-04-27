@@ -1,0 +1,32 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ec2-user@54.252.142.224 << 'EOF'
+            cd /home/ec2-user/uts-ecom-frontend
+            sudo git pull origin master
+            sudo npm install
+            sudo npm run build
+            # Restart Nginx or any other service if needed
+            sudo systemctl restart nginx
+          EOF
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
