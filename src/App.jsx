@@ -7,7 +7,7 @@ function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:8080/products");
+        const response = await fetch("http://192.168.2.184:8080/products");
 
         if (!response.ok) {
           throw new Error("Gagal terhubung ke server");
