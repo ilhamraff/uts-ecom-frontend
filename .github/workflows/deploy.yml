@@ -20,7 +20,7 @@ jobs:
 
       - name: Deploy to EC2
         run: |
-          ssh -o StrictHostKeyChecking=no -i ec2-user@54.255.249.207 << 'EOF'
+          ssh -o StrictHostKeyChecking=no ec2-user@54.255.249.207 << 'EOF'
             cd /home/ec2-user/uts-ecom-frontend
             sudo git pull origin master
             sudo npm install
