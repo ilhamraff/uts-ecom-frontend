@@ -30,6 +30,7 @@ function App() {
       <header className="text-center mb-10">
         <h1 className="text-4xl font-bold text-gray-800">Ilham GearZone</h1>
         <p className="text-gray-500 mt-2">152021054</p>
+        <p className="text-gray-500 mt-2">152021054</p>
         <p className="text-gray-500 mt-2">
           Upgrade permainanmu dengan perlengkapan gaming terbaik.
         </p>
